@@ -10,8 +10,8 @@ package
 	 */
 	public class MenuState extends FlxState 
 	{
-		private var background:FlxSprite;
-		private var forground:FlxSprite;
+		private var _background:FlxSprite;
+		private var _forground:FlxSprite;
 		
 		
 		public function MenuState() 
@@ -21,11 +21,11 @@ package
 		
 		override public function create():void
 		{
-			background = new FlxSprite(0, 0, Neum.BackgroundMenu);
-			add(background);
+			_background = new FlxSprite(0, 0, Neum.BackgroundMenu);
+			add(_background);
 			
-			forground = new FlxSprite(0, 0, Neum.ForgroundMenu);
-			add(forground);
+			_forground = new FlxSprite(0, 0, Neum.ForgroundMenu);
+			add(_forground);
 		}
 		
 	}
