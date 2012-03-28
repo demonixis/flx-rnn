@@ -21,10 +21,10 @@ package
 		
 		override public function create():void
 		{
-			_background = new FlxSprite(0, 0, Neum.BackgroundMenu);
+			_background = new FlxSprite(0, 0, Asset.BackgroundMenu);
 			add(_background);
 			
-			_forground = new FlxSprite(0, 0, Neum.ForgroundMenu);
+			_forground = new FlxSprite(0, 0, Asset.ForgroundMenu);
 			add(_forground);
 		}
 		
