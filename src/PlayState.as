@@ -7,6 +7,7 @@ package
 	public class PlayState extends FlxState 
 	{
 		private var _background:FlxSprite;
+		private var _player:Player;
 		
 		public function PlayState() 
 		{
@@ -17,7 +18,12 @@ package
 		{
 			_background = new FlxSprite(0, 0, Asset.BackgroundBoard1);
 			add(_background);
+			
+			_player = new Player(100, 100);
+			add(_player);
 		}
+		
+		
 		
 	}
 

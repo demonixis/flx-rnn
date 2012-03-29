@@ -32,9 +32,8 @@ package
 		[Embed("../assets/sprites/macaron-4dir.png")] public static var SpriteMacaron:Class;
 		[Embed("../assets/sprites/painepice-4dir.png")] public static var SpritePainEpice:Class;
 		[Embed("../assets/sprites/player.png")] public static var SpritePlayer:Class;
-
+/*
 		// Audio
-		/*
 		[Embed("../assets/audio/get-cherry.mp3")] public static var AudioGetCherry:Class;
 		[Embed("../assets/audio/loose.mp3")] public static var AudioLoose:Class;
 		[Embed("../assets/audio/ouille.mp3")] public static var AudioOuille:Class;
@@ -43,7 +42,7 @@ package
 		[Embed("../assets/audio/win.mp3")] public static var AudioWin:Class;
 
 		// Fonts
-		[Embed("../assets/fonts/GochiHand.ttf")] public static var FontGochiHand:Class;		*/
+		[Embed("../assets/fonts/GochiHand.ttf")] public static var FontGochiHand:Class;*/
 	}
 
 }
