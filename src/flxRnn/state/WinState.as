@@ -1,21 +1,21 @@
-package  
+package flxRnn.state
 {
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
-	
-	public class GameOverState extends FlxState 
+
+	public class WinState extends FlxState 
 	{
 		private var _background:FlxSprite;
 		
-		public function GameOverState() 
+		public function WinState() 
 		{
 			
 		}
-		
+
 		override public function create():void
 		{
-			_background = new FlxSprite(0, 0, Asset.BackgroundGameOver);
+			_background = new FlxSprite(0, 0, Asset.BackgroundVictory);
 			add(_background);
 		}
 	}

@@ -1,8 +1,9 @@
-package  
+package flxRnn.state 
 {
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
+	import flxRnn.Asset;
 	
 	/**
 	 * ...

@@ -1,4 +1,4 @@
-package  
+package flxRnn.state 
 {
 	import org.flixel.FlxState;
 	
