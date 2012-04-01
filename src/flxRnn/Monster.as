@@ -33,7 +33,7 @@ package flxRnn
 				((Math.random() * 100) % 2) == 0 ? 1 : -1, 
 				((Math.random() * 50) % 2) == 0 ? 1 : -1);
 				
-			_speed = new FlxPoint(Math.random() * Constant.MonsterSpeedMax, Math.random() * Constant.MonsterSpeedMax);
+			_speed = new FlxPoint(Math.random() * Constant.MonsterSpeed, Math.random() * Constant.MonsterSpeed);
 		}
 		
 		private function prepareAnimations():void

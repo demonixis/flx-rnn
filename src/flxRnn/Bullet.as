@@ -1,8 +1,12 @@
 package flxRnn
 {
+	import org.flixel.FlxBasic;
+	import org.flixel.FlxObject;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxG;
+	import org.flixel.FlxU;
+	import org.flixel.FlxGroup;
 	
 	public class Bullet extends FlxSprite
 	{	

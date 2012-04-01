@@ -23,7 +23,7 @@ package flxRnn
 			{
 				var monster:Monster = new Monster(Math.abs(Math.random() * 4));
 				add(monster);
-				_spawnInterval = 1;
+				_spawnInterval = 3;
 			}
 			
 			

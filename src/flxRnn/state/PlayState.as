@@ -4,6 +4,7 @@ package flxRnn.state
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
+	import org.flixel.FlxObject;
 	import flxRnn.Player;
 	import flxRnn.Asset;
 	import flxRnn.MonsterFactory;
@@ -37,6 +38,25 @@ package flxRnn.state
 			super.update();
 			_player.update();
 			_monsters.update();
+			
+			FlxG.collide(_player.bullets, _monsters, onCollideBulletMonster);
+			FlxG.collide(_player, _monsters, onCollidePlayerMonster);
+		}
+		
+		public function onCollidePlayerMonster(entity1:FlxObject, entity2:FlxObject):void
+		{
+			// Alpha
+			
+			// Diminuer vitesse
+			
+			// Enclencher timer
+		}
+		
+		public function onCollideBulletMonster(entity1:FlxObject, entity2:FlxObject):void
+		{
+			entity1.kill();
+			entity2.kill();
+			FlxG.score++;
 		}
 		
 		override public function draw():void

@@ -85,6 +85,10 @@ package flxRnn
 			_listBullets.draw();
 		}
 		
+		public function get bullets():FlxGroup
+		{
+			return _listBullets;
+		}
 		
 		public function shoot ():void 
 		{
