@@ -8,6 +8,7 @@ package flxRnn.state
 	import org.flixel.FlxU;
 	import flxRnn.Asset;
 	import flxRnn.state.PlayState;
+	import flxRnn.state.ScoreState;
 	
 	/**
 	 * ...
@@ -36,7 +37,7 @@ package flxRnn.state
 			
 			_menuItemsText = new Array(3);
 			_menuItemsText[0] = new FlxText(440, 305, 350, "Jouer");
-			_menuItemsText[1] = new FlxText(460, 390, 350, "Options");
+			_menuItemsText[1] = new FlxText(460, 390, 350, "Hightscores");
 			_menuItemsText[2] = new FlxText(465, 485, 350, "DLC");
 			
 			for (var i:int = 0; i < 3; i++)
@@ -91,6 +92,7 @@ package flxRnn.state
 						FlxG.switchState(new PlayState);
 						break;
 					case 1:
+						FlxG.switchState(new ScoreState);
 						break;
 					case 2: 
 						FlxU.openURL("http://www.demonixis.net");
