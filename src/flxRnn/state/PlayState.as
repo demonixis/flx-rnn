@@ -1,5 +1,6 @@
 package flxRnn.state 
 {
+	import org.flixel.FlxRect;
 	import org.flixel.FlxState;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
@@ -32,18 +33,24 @@ package flxRnn.state
 			add(_background);
 			
 			_player = new Player(100, 100);
+			_player.worldDimension = new FlxRect(0, 0, _background.width, _background.height);
 			add(_player);
+			
+			FlxG.camera.follow(_player);
+			FlxG.camera.setBounds(0, 0, _background.width, _background.height);
 			
 			_monsters = new MonsterFactory();
 			add(_monsters);
 			
 			_scoreHud = new FlxSprite(10, 15, Asset.HudScore);
 			_scoreHud.angle = -10;
+			_scoreHud.scrollFactor.x = _scoreHud.scrollFactor.y = 0;
 			add(_scoreHud);
 			
 			_scoreText = new FlxText(15, 35, 150, "Score : " + FlxG.score);
 			_scoreText.setFormat(null, 22, 0xff00ff, "center");
 			_scoreText.angle = -15;
+			_scoreText.scrollFactor.x = _scoreText.scrollFactor.y = 0;
 			add(_scoreText);
 		}
 		

@@ -2,6 +2,7 @@ package flxRnn
 {
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxRect;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
 	import org.flixel.FlxText;
@@ -12,6 +13,7 @@ package flxRnn
 	 */
 	public class Player extends FlxSprite 
 	{
+		public var worldDimension:FlxRect;
 		private var _listBullets:FlxGroup;
 		private var _canShoot:Boolean;
 		private var _bulletShootInterval:Number;
@@ -35,6 +37,8 @@ package flxRnn
 			_bulletShootInterval = 0;
 			
 			this.immovable = true;
+			
+			this.worldDimension = new FlxRect(0, 0, FlxG.width, FlxG.height);
 		}
 
 		override public function update():void
@@ -82,7 +86,10 @@ package flxRnn
 			
 			
 			
-			if (nextPostition.x < 0 || nextPostition.x + this.width > FlxG.width || nextPostition.y < 0 || nextPostition.y + this.height > FlxG.height)
+			if (nextPostition.x < worldDimension.x || 
+				nextPostition.x + this.width > worldDimension.width || 
+				nextPostition.y < worldDimension.y || 
+				nextPostition.y + this.height > worldDimension.height)
 			{
 				updatePosition(lastPosition);
 			}
