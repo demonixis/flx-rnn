@@ -6,6 +6,7 @@ package
 	import flxRnn.state.MenuState;
 	
 	[SWF(width="800", height="600", backgroundColor="#00000000")]
+	[Frame(factoryClass="Preloader")]
 	public class Main extends FlxGame 
 	{
 		public function Main()

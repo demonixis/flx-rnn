@@ -1,3 +1,4 @@
 #!/bin/bash
-mxmlc -sp lib/ -- src/Main.as
+mxmlc -sp lib/ assets/ -- src/Main.as 
 mv src/Main.swf bin/FlxRnn.swf
+
