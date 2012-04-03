@@ -11,6 +11,8 @@ package flxRnn
 		public static var ShootInterval:int = 5;
 		public static var MonsterSpeed:int = 4;
 		public static var MonsterScaleMax:int = 4;
+		
+		public static var Scores:Array;
 	}
 
 }

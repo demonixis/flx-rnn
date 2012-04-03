@@ -1,5 +1,6 @@
 package 
 {
+	import flxRnn.Constant;
 	import org.flixel.FlxGame;
 	import flxRnn.state.PlayState;
 	import flxRnn.state.MenuState;
@@ -9,6 +10,12 @@ package
 	{
 		public function Main()
 		{
+			Constant.Scores = new Array(5);
+			for (var i:int = 0; i < 5; i++)
+			{
+				Constant.Scores[i] = 0;
+			}
+			
 			super(800, 600, flxRnn.state.MenuState, 1);
 		}
 	}

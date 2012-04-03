@@ -5,6 +5,7 @@ package flxRnn.state
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
 	import org.flixel.FlxObject;
+	import org.flixel.FlxText;
 	import flxRnn.Player;
 	import flxRnn.Asset;
 	import flxRnn.MonsterFactory;
@@ -14,6 +15,11 @@ package flxRnn.state
 		private var _background:FlxSprite;
 		private var _player:Player;
 		private var _monsters:MonsterFactory;
+		
+		private var _scoreHud:FlxSprite;
+		private var _scoreText:FlxText;
+		private var _liveHud:FlxSprite;
+		private var _liveText:FlxText;
 		
 		public function PlayState() 
 		{
@@ -30,6 +36,15 @@ package flxRnn.state
 			
 			_monsters = new MonsterFactory();
 			add(_monsters);
+			
+			_scoreHud = new FlxSprite(10, 15, Asset.HudScore);
+			_scoreHud.angle = -10;
+			add(_scoreHud);
+			
+			_scoreText = new FlxText(15, 35, 150, "Score : " + FlxG.score);
+			_scoreText.setFormat(null, 22, 0xff00ff, "center");
+			_scoreText.angle = -15;
+			add(_scoreText);
 		}
 		
 		
@@ -57,6 +72,7 @@ package flxRnn.state
 			entity1.kill();
 			entity2.kill();
 			FlxG.score++;
+			_scoreText.text = "Score : " + FlxG.score;
 		}
 		
 		override public function draw():void

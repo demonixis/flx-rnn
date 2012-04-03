@@ -8,7 +8,7 @@ package flxRnn.state
 	{
 		private var _background:FlxSprite;
 		
-		public function WinState() 
+		public function WinState(isEnd:Boolean) 
 		{
 			
 		}
