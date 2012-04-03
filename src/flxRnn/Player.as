@@ -13,7 +13,7 @@ package flxRnn
 	 */
 	public class Player extends FlxSprite 
 	{
-		public var worldDimension:FlxRect;
+		private var _cameraRect:FlxRect;
 		private var _listBullets:FlxGroup;
 		private var _canShoot:Boolean;
 		private var _bulletShootInterval:Number;
@@ -38,7 +38,7 @@ package flxRnn
 			
 			this.immovable = true;
 			
-			this.worldDimension = new FlxRect(0, 0, FlxG.width, FlxG.height);
+			this._cameraRect = FlxG.camera.bounds;
 		}
 
 		override public function update():void
@@ -82,14 +82,12 @@ package flxRnn
 				shoot();
 			}
 			
-			_angle = _mathHelper.getAngle(this.x, this.y, FlxG.mouse.screenX, FlxG.mouse.screenY);
+			_angle = _mathHelper.getAngle(this.x, this.y, FlxG.mouse.getWorldPosition(FlxG.camera).x, FlxG.mouse.getWorldPosition(FlxG.camera).y);
 			
-			
-			
-			if (nextPostition.x < worldDimension.x || 
-				nextPostition.x + this.width > worldDimension.width || 
-				nextPostition.y < worldDimension.y || 
-				nextPostition.y + this.height > worldDimension.height)
+			if (nextPostition.x < _cameraRect.x || 
+				nextPostition.x + this.width > _cameraRect.width || 
+				nextPostition.y < _cameraRect.y || 
+				nextPostition.y + this.height > _cameraRect.height)
 			{
 				updatePosition(lastPosition);
 			}

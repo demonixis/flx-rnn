@@ -1,6 +1,7 @@
 package flxRnn
 {
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxRect;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
 	
@@ -10,6 +11,7 @@ package flxRnn
 	 */
 	public class Monster extends FlxSprite 
 	{
+		private var _cameraRect:FlxRect;
 		private var _texture:Class;
 		private var _type:int;
 		private var _direction:FlxPoint;
@@ -19,6 +21,9 @@ package flxRnn
 		{	
 			super( -10, -10);
 			
+			_cameraRect = FlxG.camera.bounds;
+			
+			FlxG.camera.bounds;
 			if (type < 0) _type = 0;
 			else if (type >= 3) _type = 2;
 			else _type = type;
@@ -26,14 +31,17 @@ package flxRnn
 			// Les animations sont prêtes on connait la largeur et la hauteur d'un sprite
 			prepareAnimations();
 		
-			this.x = Math.random() * FlxG.width;
-			this.y = Math.random() * FlxG.height - this.height;
+			this.x = Math.random() * _cameraRect.width;
+			this.y = Math.random() * _cameraRect.height - this.height;
 			
 			_direction = new FlxPoint( 
 				((Math.random() * 100) % 2) == 0 ? 1 : -1, 
 				((Math.random() * 50) % 2) == 0 ? 1 : -1);
 				
 			_speed = new FlxPoint(Math.random() * Constant.MonsterSpeed, Math.random() * Constant.MonsterSpeed);
+			
+			var scale:Number = Math.random() * Constant.MonsterScaleMax;
+			this.scale = new FlxPoint(scale, scale);
 		}
 		
 		private function prepareAnimations():void
@@ -72,24 +80,24 @@ package flxRnn
 		
 		override public function update():void
 		{
-			if (this.x < 0)
+			if (this.x < _cameraRect.x)
 			{
 				_direction.x = 1;
 				play("right");
 			}
-			else if (this.x + this.width > FlxG.width)
+			else if (this.x + this.width > _cameraRect.width)
 			{
 				_direction.x = -1;
 				play("left");
 			}
 		
 			
-			if (this.y < 0)
+			if (this.y < _cameraRect.y)
 			{
 				_direction.y = 1;
 				play("down");
 			}
-			else if (this.y + this.health > FlxG.height)
+			else if (this.y + this.height > _cameraRect.height)
 			{
 				_direction.y = -1;
 				play("up");

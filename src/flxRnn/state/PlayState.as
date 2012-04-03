@@ -32,12 +32,14 @@ package flxRnn.state
 			_background = new FlxSprite(0, 0, Asset.BackgroundBoard1);
 			add(_background);
 			
+			// 1 - Initialiser le viewport global
+			FlxG.camera.setBounds(0, 0, _background.width, _background.height, true);
+			
 			_player = new Player(100, 100);
-			_player.worldDimension = new FlxRect(0, 0, _background.width, _background.height);
 			add(_player);
 			
+			// 2 - Suivre le joueur
 			FlxG.camera.follow(_player);
-			FlxG.camera.setBounds(0, 0, _background.width, _background.height);
 			
 			_monsters = new MonsterFactory();
 			add(_monsters);

@@ -2,6 +2,7 @@ package flxRnn
 {
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxG;
+	import org.flixel.FlxRect;
 
 	public class MonsterFactory extends FlxGroup 
 	{
@@ -9,7 +10,6 @@ package flxRnn
 		
 		public function MonsterFactory() 
 		{
-			
 			_spawnInterval = 0;
 		}
 		
