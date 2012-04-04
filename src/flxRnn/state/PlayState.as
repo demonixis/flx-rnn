@@ -13,18 +13,21 @@ package flxRnn.state
 
 	public class PlayState extends FlxState 
 	{
+		private var _id:int;
 		private var _background:FlxSprite;
 		private var _player:Player;
 		private var _monsters:MonsterFactory;
 		
 		private var _scoreHud:FlxSprite;
 		private var _scoreText:FlxText;
-		private var _liveHud:FlxSprite;
-		private var _liveText:FlxText;
+		private var _levelHud:FlxSprite;
+		private var _levelText:FlxText;
 		
-		public function PlayState() 
+		public function PlayState(id:int) 
 		{
+			this._id = id;
 			FlxG.mouse.show();
+			FlxG.score = 0;
 		}
 
 		override public function create():void
@@ -54,6 +57,17 @@ package flxRnn.state
 			_scoreText.angle = -15;
 			_scoreText.scrollFactor.x = _scoreText.scrollFactor.y = 0;
 			add(_scoreText);
+			
+			_levelHud = new FlxSprite(600, 15, Asset.HudLive);
+			_levelHud.angle = 10;
+			_levelHud.scrollFactor.x = _scoreHud.scrollFactor.y = 0;
+			add(_levelHud);
+			
+			_levelText = new FlxText(620, 30, 150, "Gateau " + _id);
+			_levelText.setFormat(null, 22, 0xff00ff, "center");
+			_levelText.angle = 15;
+			_levelText.scrollFactor.x = _levelText.scrollFactor.y = 0;
+			add(_levelText);
 		}
 		
 		

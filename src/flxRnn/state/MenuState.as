@@ -9,6 +9,7 @@ package flxRnn.state
 	import flxRnn.Asset;
 	import flxRnn.state.PlayState;
 	import flxRnn.state.ScoreState;
+	import flxRnn.Player;
 	
 	/**
 	 * ...
@@ -89,7 +90,7 @@ package flxRnn.state
 				switch (_state)
 				{
 					case 0:
-						FlxG.switchState(new PlayState);
+						FlxG.switchState(new PlayState(1));
 						break;
 					case 1:
 						FlxG.switchState(new ScoreState);
