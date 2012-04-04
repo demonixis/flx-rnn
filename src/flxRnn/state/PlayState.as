@@ -1,5 +1,6 @@
 package flxRnn.state 
 {
+	import flxRnn.HudTimer;
 	import org.flixel.FlxRect;
 	import org.flixel.FlxState;
 	import org.flixel.FlxPoint;
@@ -22,6 +23,7 @@ package flxRnn.state
 		private var _scoreText:FlxText;
 		private var _levelHud:FlxSprite;
 		private var _levelText:FlxText;
+		private var _counterHud:HudTimer;
 		
 		public function PlayState(id:int) 
 		{
@@ -60,7 +62,7 @@ package flxRnn.state
 			
 			_levelHud = new FlxSprite(600, 15, Asset.HudLive);
 			_levelHud.angle = 10;
-			_levelHud.scrollFactor.x = _scoreHud.scrollFactor.y = 0;
+			_levelHud.scrollFactor.x = _levelHud.scrollFactor.y = 0;
 			add(_levelHud);
 			
 			_levelText = new FlxText(620, 30, 150, "Gateau " + _id);
@@ -68,6 +70,10 @@ package flxRnn.state
 			_levelText.angle = 15;
 			_levelText.scrollFactor.x = _levelText.scrollFactor.y = 0;
 			add(_levelText);
+			
+			_counterHud = new HudTimer(15, 450);
+			_counterHud.scrollFactor.x = _counterHud.scrollFactor.y = 0;
+			add(_counterHud);
 		}
 		
 		
