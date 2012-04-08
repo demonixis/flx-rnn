@@ -20,7 +20,6 @@ package flxRnn
 		[Embed("../../assets/hud/plateau-score.png")] public static var HudScore:Class;
 		[Embed("../../assets/hud/timer.png")] public static var HudTimer:Class;
 		[Embed("../../assets/hud/timer-counter.png")] public static var HudTimerCount:Class;
-		[Embed("../../assets/hud/timer-mask.png")] public static var HudTimerMask:Class;
 
 		// Game objects
 		[Embed("../../assets/objects/bullet.png")] public static var ObjectBullet:Class;

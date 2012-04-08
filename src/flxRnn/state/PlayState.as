@@ -1,6 +1,9 @@
 package flxRnn.state 
 {
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	import flxRnn.HudTimer;
+	import flxRnn.Level;
 	import org.flixel.FlxRect;
 	import org.flixel.FlxState;
 	import org.flixel.FlxPoint;
@@ -11,6 +14,7 @@ package flxRnn.state
 	import flxRnn.Player;
 	import flxRnn.Asset;
 	import flxRnn.MonsterFactory;
+	import flxRnn.Constant;
 
 	public class PlayState extends FlxState 
 	{
@@ -18,6 +22,7 @@ package flxRnn.state
 		private var _background:FlxSprite;
 		private var _player:Player;
 		private var _monsters:MonsterFactory;
+		private var _level:Level;
 		
 		private var _scoreHud:FlxSprite;
 		private var _scoreText:FlxText;
@@ -45,6 +50,9 @@ package flxRnn.state
 			
 			// 2 - Suivre le joueur
 			FlxG.camera.follow(_player);
+			
+			// 3 - Création du niveau
+			_level = new Level(_id, _player);
 			
 			_monsters = new MonsterFactory();
 			add(_monsters);
@@ -80,20 +88,56 @@ package flxRnn.state
 		override public function update():void
 		{
 			super.update();
-			_player.update();
-			_monsters.update();
 			
-			FlxG.collide(_player.bullets, _monsters, onCollideBulletMonster);
-			FlxG.collide(_player, _monsters, onCollidePlayerMonster);
+			if (!_level.isFinish)
+			{
+				_level.update();
+				_player.update();
+				_monsters.update();
+				
+				FlxG.collide(_player.bullets, _monsters, onCollideBulletMonster);
+				FlxG.collide(_player, _monsters, onCollidePlayerMonster);
+			}
+			else
+			{
+				// Montrer une "popup"
+				
+				// On passe au prochain niveau
+				_id++;
+				var isEnd:Boolean = _id > Constant.levelMax;
+
+				FlxG.switchState(new WinState(isEnd, _id));
+			}
+		}
+		
+		override public function draw():void
+		{
+			super.draw();
+			
+			if (!_level.isFinish)
+			{
+				_level.draw();
+				_player.draw();
+				_monsters.draw();
+			}
 		}
 		
 		public function onCollidePlayerMonster(entity1:FlxObject, entity2:FlxObject):void
 		{
 			// Alpha
-			
+			_player.alpha = 0.4;
 			// Diminuer vitesse
-			
+			_player.speed = Constant.PlayerSpeedLow;
 			// Enclencher timer
+			var timer:Timer = new Timer(1000, 0);
+			timer.start();
+			timer.addEventListener(TimerEvent.TIMER, restorePlayerSituation);
+		}
+		
+		private function restorePlayerSituation(event:TimerEvent):void
+		{
+			_player.alpha = 1;
+			_player.speed = Constant.PlayerSpeed;
 		}
 		
 		public function onCollideBulletMonster(entity1:FlxObject, entity2:FlxObject):void
@@ -103,13 +147,5 @@ package flxRnn.state
 			FlxG.score++;
 			_scoreText.text = "Score : " + FlxG.score;
 		}
-		
-		override public function draw():void
-		{
-			super.draw();
-			_player.draw();
-			_monsters.draw();
-		}
 	}
-
 }

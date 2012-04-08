@@ -41,6 +41,11 @@ package flxRnn
 		{
 			return 180 * radValue / Math.PI;
 		}
+		
+		public function getRandomInt(min:int, max:int):int
+		{
+			return Math.floor(Math.random() * (1 + max - min) + min); 
+		}
 	}
 
 }

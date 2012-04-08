@@ -21,8 +21,7 @@ package flxRnn
 			_timeText = new FlxText(x + 35, y + 70, 50, "60 sec");
 			_timeText.setFormat(null, 12, 0xf000ff, "center");
 			_timeText.scrollFactor.x = _timeText.scrollFactor.y = 0;
-			
-			_counter = 60;
+
 			_elapsed = 0;
 		}
 		

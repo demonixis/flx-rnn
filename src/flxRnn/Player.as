@@ -16,9 +16,11 @@ package flxRnn
 		private var _cameraRect:FlxRect;
 		private var _listBullets:FlxGroup;
 		private var _canShoot:Boolean;
+		private var _disabledShoot:Boolean;
 		private var _bulletShootInterval:Number;
 		private var _angle:Number;
 		private var _mathHelper:MathHelper;
+		private var _speed:int;
 		
 		public function Player(positionX:int, positionY:int) 
 		{
@@ -35,6 +37,8 @@ package flxRnn
 			
 			_canShoot = true;
 			_bulletShootInterval = 0;
+			_speed = Constant.PlayerSpeed;
+			_disabledShoot = false;
 			
 			this.immovable = true;
 			
@@ -57,27 +61,27 @@ package flxRnn
 			
 			if (FlxG.keys.UP || FlxG.keys.Z)
 			{
-				nextPostition.y -= Constant.PlayerSpeed;
+				nextPostition.y -= _speed;
 				this.play("up");
 			}
 			else if (FlxG.keys.DOWN || FlxG.keys.S)
 			{
-				nextPostition.y += Constant.PlayerSpeed;
+				nextPostition.y += _speed;
 				this.play("down");
 			}
 			
 			if (FlxG.keys.LEFT || FlxG.keys.Q)
 			{
-				nextPostition.x -= Constant.PlayerSpeed;
+				nextPostition.x -= _speed;
 				this.play("left");
 			}
 			else if (FlxG.keys.RIGHT || FlxG.keys.D)
 			{
-				nextPostition.x += Constant.PlayerSpeed;
+				nextPostition.x += _speed;
 				this.play("right");
 			}
 			
-			if (FlxG.keys.SPACE || FlxG.mouse.pressed())
+			if (!_disabledShoot && (FlxG.keys.SPACE || FlxG.mouse.pressed()))
 			{
 				shoot();
 			}
@@ -124,6 +128,21 @@ package flxRnn
 				
 				_listBullets.add(new Bullet(this.x, this.y, _angle));
 			}
+		}
+		
+		public function set speed(speed:int):void
+		{
+			_speed = speed;
+		}
+		
+		public function set disableShoot(shoot:Boolean):void
+		{
+			_disabledShoot = shoot;
+		}
+		
+		public function get disableShoot():Boolean
+		{
+			return _disabledShoot;
 		}
 	}
 

@@ -9,6 +9,8 @@ package flxRnn.state
 	import flxRnn.Asset;
 	import flxRnn.state.PlayState;
 	import flxRnn.state.ScoreState;
+	import flxRnn.state.WinState;
+	import flxRnn.state.GameOverState;
 	import flxRnn.Player;
 	
 	/**

@@ -1,3 +1,5 @@
 #!/bin/bash
 rm -Rf *.~
 rm -Rf obj/
+rm -Rf air/*
+rm -Rf bat/FlxRnn.p12
