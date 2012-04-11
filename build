@@ -1,4 +1,6 @@
 #!/bin/bash
-mxmlc -sp lib/ assets/ -- src/Main.as 
+TARGET=11.1
+FLEX_PATH="/home/yann/Programmes/Flash/flex-4.6/frameworks/locale/en_US"
+mxmlc src/Main.as -sp lib/ -static-link-runtime-shared-libraries=true -target-player=$TARGET -library-path+=$FLEX_PATH -default-size=800,600
 mv src/Main.swf bin/FlxRnn.swf
 
